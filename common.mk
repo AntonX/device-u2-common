@@ -159,9 +159,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bq.gpu_to_cpu_unsupported=1 \
     ro.hwui.disable_scissor_opt=true \
     dalvik.vm.dexopt-flags=m=y,u=n \
+    dalvik.vm.dexopt-data-only=1 \
     ro.sf.lcd_density=240 \
     ro.opengles.version=131072 \
-    dalvik.vm.dexopt-data-only=1 \
     ro.com.google.clientidbase=android-lge \
     ro.com.google.clientidbase.ms=android-lge \
     ro.com.google.clientidbase.gmm=android-lge \
@@ -174,7 +174,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.target_operator=OPEN \
     ro.bt.bdaddr_path=/sys/devices/platform/bd_address/bdaddr_if \
     persist.sys.usb.config=mtp,adb \
-    ro.ksm.default=1
+    ro.ksm.default=1 \
+    debug.sf.swaprect=1 \
+    ro.secure=0 \
+    ro.HOME_APP_ADJ=1 
 
 # Charger mode
 PRODUCT_PACKAGES += \
