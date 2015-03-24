@@ -111,7 +111,7 @@ RECOVERY_FSTAB_VERSION = 2
 TARGET_OTA_ASSERT_DEVICE := p760,p765,p768,p769,u2
 BOARD_RECOVERY_SWIPE := true
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/u2-common/recovery/recovery-gfx.c
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../../device/lge/u2-common/recovery/recovery_keys.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/lge/u2-common/recovery/recovery_keys.c
 
 BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 
