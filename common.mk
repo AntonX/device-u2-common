@@ -151,9 +151,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
 # Vold
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vold.switchablepair=/storage/sdcard0,/storage/sdcard1
-    ro.additionalmounts=/storage/sdcard1
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.vold.switchablepair=/storage/sdcard0,/storage/sdcard1
+#    ro.additionalmounts=/storage/sdcard1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bq.gpu_to_cpu_unsupported=1 \

@@ -1,0 +1,15 @@
+
+# SGX540 is slower with the scissor optimization enabled
+ro.hwui.disable_scissor_opt=true
+
+# fix graphics rotation glitches
+ro.bq.gpu_to_cpu_unsupported=1
+
+# Enable MDP swaprect
+debug.sf.swaprect=1
+
+# launhcer will not be killed as much
+ro.HOME_APP_ADJ=1
+
+# unsecure ADB
+ro.secure=0
