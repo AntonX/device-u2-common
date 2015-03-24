@@ -175,26 +175,26 @@
 #define DB_TO_EARPIECE_VOLUME(x) (((x) + 24) / 2)
 
 /* use-case specific mic volumes, all in dB */
-#define CAPTURE_DIGITAL_MIC_VOLUME            26
-#define CAPTURE_MAIN_MIC_VOLUME               28
-#define CAPTURE_SUB_MIC_VOLUME                28
-#define CAPTURE_HEADSET_MIC_VOLUME            20
+#define CAPTURE_DIGITAL_MIC_VOLUME            18
+#define CAPTURE_MAIN_MIC_VOLUME               18
+#define CAPTURE_SUB_MIC_VOLUME                18
+#define CAPTURE_HEADSET_MIC_VOLUME            15
 
-#define VOICE_RECOGNITION_MAIN_MIC_VOLUME     28
-#define VOICE_RECOGNITION_SUB_MIC_VOLUME      28
-#define VOICE_RECOGNITION_HEADSET_MIC_VOLUME  20
+#define VOICE_RECOGNITION_MAIN_MIC_VOLUME     6
+#define VOICE_RECOGNITION_SUB_MIC_VOLUME      9
+#define VOICE_RECOGNITION_HEADSET_MIC_VOLUME  9
 
-#define CAMCORDER_MAIN_MIC_VOLUME             30
-#define CAMCORDER_SUB_MIC_VOLUME              30
-#define CAMCORDER_HEADSET_MIC_VOLUME          20
+#define CAMCORDER_MAIN_MIC_VOLUME             24
+#define CAMCORDER_SUB_MIC_VOLUME              24
+#define CAMCORDER_HEADSET_MIC_VOLUME          21
 
-#define VOIP_MAIN_MIC_VOLUME                  15
-#define VOIP_SUB_MIC_VOLUME                   15
-#define VOIP_HEADSET_MIC_VOLUME               15
+#define VOIP_MAIN_MIC_VOLUME                  0
+#define VOIP_SUB_MIC_VOLUME                   9
+#define VOIP_HEADSET_MIC_VOLUME               6
 
-#define VOICE_CALL_MAIN_MIC_VOLUME            15 //-2
-#define VOICE_CALL_SUB_MIC_VOLUME             15
-#define VOICE_CALL_HEADSET_MIC_VOLUME         15
+#define VOICE_CALL_MAIN_MIC_VOLUME            -3
+#define VOICE_CALL_SUB_MIC_VOLUME             9
+#define VOICE_CALL_HEADSET_MIC_VOLUME         6
 
 /* use-case specific output volumes */
 #define NORMAL_SPEAKER_VOLUME                 6
@@ -203,6 +203,7 @@
 #define HEADSET_VOLUME                        -12
 #define HEADPHONE_VOLUME                      -12
 
+#define BLUETOOTH_MIC_VOLUME                  -18
 enum tty_modes {
     TTY_MODE_OFF,
     TTY_MODE_VCO,
@@ -260,7 +261,7 @@ struct route_setting defaults[] = {
     },
     {
         .ctl_name = "AMIC Equalizer",
-        .strval = "High-pass -18dB",
+        .strval = MIXER_0DB_HIGH_PASS,
     },
     {
         .ctl_name = MIXER_DL1_MEDIA_PLAYBACK_VOLUME,
@@ -320,7 +321,7 @@ struct route_setting defaults[] = {
     /* bt */
     {
         .ctl_name = MIXER_BT_UL_VOLUME,
-        .intval = MIXER_ABE_GAIN_0DB,
+        .intval = DB_TO_ABE_GAIN(BLUETOOTH_MIC_VOLUME),
     },
     {
         .ctl_name = NULL,
@@ -2661,7 +2662,7 @@ static int adev_set_mic_mute(struct audio_hw_device *dev, bool state)
         for (channel = 0; channel < mixer_ctl_get_num_values(
                 adev->mixer_ctls.bt_ul_volume); channel++) {
             mixer_ctl_set_value(adev->mixer_ctls.bt_ul_volume,
-                   channel, (state ? 0 : DB_TO_ABE_GAIN(6)));
+                   channel, (state ? 0 : DB_TO_ABE_GAIN(BLUETOOTH_MIC_VOLUME)));
         }
     }
 
