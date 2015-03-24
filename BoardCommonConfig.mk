@@ -27,13 +27,6 @@ BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 
-# Recovery
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB = device/lge/u2-common/fstab.u2
-RECOVERY_FSTAB_VERSION = 2
-BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
-TARGET_OTA_ASSERT_DEVICE := p760,p765,p768,p769,u2
-
 # EGL
 BOARD_EGL_CFG := device/lge/u2-common/egl.cfg
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
@@ -109,8 +102,18 @@ TARGET_KERNEL_MODULES += SGX_MODULES
 BOARD_RIL_CLASS := ../../../device/lge/u2-common/ril/
 
 # Charger
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/u2-common/recovery-gfx.c
 BOARD_CHARGER_ENABLE_SUSPEND := true
+
+#Recovery
+BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_FSTAB = device/lge/u2-common/fstab.u2
+RECOVERY_FSTAB_VERSION = 2
+TARGET_OTA_ASSERT_DEVICE := p760,p765,p768,p769,u2
+BOARD_RECOVERY_SWIPE := true
+BOARD_CUSTOM_GRAPHICS := ../../../device/lge/u2-common/recovery/recovery-gfx.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../../device/lge/u2-common/recovery/recovery_keys.c
+
+BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 
 # SELinux
 BOARD_SEPOLICY_DIRS := \
