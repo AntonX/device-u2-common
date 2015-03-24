@@ -20,5 +20,7 @@
 
     <!-- Home button wake support -->
     <bool name="config_show_homeWake">true</bool>
+
+    <bool name="has_led_flash">true</bool>
 </resources>
 

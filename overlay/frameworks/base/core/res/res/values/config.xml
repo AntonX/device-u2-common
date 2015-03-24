@@ -110,4 +110,7 @@
     <!-- LED Flashlight -->
     <bool name="config_enableTorch">true</bool>
 
+    <!-- Enable selectable fade/CRT screen off animation -->
+    <bool name="config_animateScreenLights">false</bool>
+
 </resources>
