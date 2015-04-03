@@ -77,8 +77,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     camera.u2 \
-    hwcomposer.u2 \
-    power.u2
+    hwcomposer.u2
 
 # OMAP4 OMX
 PRODUCT_PACKAGES += \
