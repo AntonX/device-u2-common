@@ -98,6 +98,9 @@ SGX_MODULES:
 
 TARGET_KERNEL_MODULES += SGX_MODULES
 
+# toolchain for kernel, must be in prebuilt\linux-x86\toolchain\
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := linaro-4.7
+
 ## Radio fixes
 BOARD_RIL_CLASS := ../../../device/lge/u2-common/ril/
 
