@@ -203,7 +203,7 @@
 #define HEADSET_VOLUME                        -12
 #define HEADPHONE_VOLUME                      -12
 
-#define BLUETOOTH_MIC_VOLUME                  -12
+#define BLUETOOTH_MIC_VOLUME                  6
 
 enum tty_modes {
     TTY_MODE_OFF,
