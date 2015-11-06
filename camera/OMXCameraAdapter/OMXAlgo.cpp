@@ -1113,7 +1113,7 @@ status_t OMXCameraAdapter::setSensorOrientation(unsigned int degree)
 
         ret = setFormat(OMX_CAMERA_PORT_VIDEO_OUT_PREVIEW, *mPreviewData);
         if ( NO_ERROR != ret ) {
-            CAMHAL_LOGEB("Error while configuring format 0x%x", ret);
+            CAMHAL_LOGEB("Error while configuring format 640x480, 0x%x", ret);
             return ret;
         }
 
@@ -1124,7 +1124,7 @@ status_t OMXCameraAdapter::setSensorOrientation(unsigned int degree)
     else if (!mPreviewPortInitialized) {
         ret = setFormat(OMX_CAMERA_PORT_VIDEO_OUT_PREVIEW, *mPreviewData);
         if ( NO_ERROR != ret ) {
-            CAMHAL_LOGEB("Error while configuring format 0x%x", ret);
+            CAMHAL_LOGEB("Error while configuring format %dx%d, 0x%x", mPreviewData->mWidth, mPreviewData->mHeight, ret);
             return ret;
         }
         mPreviewPortInitialized = true;
@@ -1162,7 +1162,8 @@ status_t OMXCameraAdapter::setSensorOrientation(unsigned int degree)
             ret = setFormat (mCameraAdapterParameters.mPrevPortIndex,
                              mCameraAdapterParameters.mCameraPortParams[mCameraAdapterParameters.mPrevPortIndex]);
             if ( NO_ERROR != ret ) {
-                CAMHAL_LOGEB("Error while configuring format 0x%x", ret);
+                CAMHAL_LOGEB("Error while configuring format %dx%d, 0x%x", 
+                  mCameraAdapterParameters.mCameraPortParams[mCameraAdapterParameters.mPrevPortIndex].mWidth, mCameraAdapterParameters.mCameraPortParams[mCameraAdapterParameters.mPrevPortIndex].mHeight, ret);
                 return ret;
             }
 

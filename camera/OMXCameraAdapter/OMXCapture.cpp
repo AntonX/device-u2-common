@@ -234,13 +234,14 @@ status_t OMXCameraAdapter::setParametersCapture(const android::CameraParameters 
         }
     }
 
-    if ( params.getInt(android::CameraParameters::KEY_ROTATION) != -1 )
+    varint = params.getInt(android::CameraParameters::KEY_ROTATION);
+    if ( varint != -1 )
         {
-        if (params.getInt(android::CameraParameters::KEY_ROTATION) != (int) mPictureRotation) {
+        if ((unsigned int) varint != mPictureRotation) {
             mPendingCaptureSettings |= SetRotation;
         }
         if (cap->mFrameLayoutType == OMX_TI_StereoFrameLayout2D) {
-            mPictureRotation = params.getInt(android::CameraParameters::KEY_ROTATION);
+            mPictureRotation = varint;
         } else {
             mPictureRotation = 0;
         }
@@ -256,14 +257,14 @@ status_t OMXCameraAdapter::setParametersCapture(const android::CameraParameters 
 #ifdef OMAP_ENHANCEMENT
     // Read Sensor Orientation and set it based on perating mode
     varint = params.getInt(TICameraParameters::KEY_SENSOR_ORIENTATION);
-    if ( varint != -1 )
+    if ( varint != -1 && mCapMode == OMXCameraAdapter::VIDEO_MODE )
         {
         mSensorOrientation = varint;
-        if (mSensorOrientation == 270 ||mSensorOrientation==90)
+        if (mSensorOrientation == 270 || mSensorOrientation==90)
             {
             CAMHAL_LOGEA(" Orientation is 270/90. So setting counter rotation to Ducati");
             mSensorOrientation +=180;
-            mSensorOrientation%=360;
+            mSensorOrientation %= 360;
             }
         }
     else

@@ -1114,6 +1114,7 @@ status_t OMXCameraAdapter::setSensorQuirks(int orientation,
 
     return overclockStatus;
 }
+
 status_t OMXCameraAdapter::setFormat(OMX_U32 port, OMXCameraPortParameters &portParams)
 {
     LOG_FUNCTION_NAME;

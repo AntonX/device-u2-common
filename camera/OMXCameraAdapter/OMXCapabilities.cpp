@@ -143,7 +143,7 @@ const CapResolution OMXCameraAdapter::mPreviewRes [] = {
 
 const CapResolution OMXCameraAdapter::mPreviewPortraitRes [] = {
     //Portrait resolutions
-    { 1088, 1920, "1088x1920" },
+    { 1080, 1920, "1080x1920" },
     { 720, 1280, "720x1280" },
     { 480, 800, "480x800" },
     { 576, 720, "576x720" },
